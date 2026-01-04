@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+  <title>MyDay Pro</title>
+</head>
+<body>
+  <!-- Overlay pour demander le nom lors du premier lancement -->
+  <div id="name-overlay" class="overlay hidden">
+    <div class="overlay-content">
+      <h2>Bienvenue !</h2>
+      <p>Comment vous appelez‑vous ?</p>
+      <input type="text" id="user-name-input" placeholder="Votre prénom" />
+      <button id="save-user-name-btn">Enregistrer</button>
+    </div>
+  </div>
+
+  <!-- Conteneur principal -->
+  <div class="app-container">
+    <!-- Barre de navigation principale -->
+    <nav class="nav-bar">
+      <button class="nav-btn active" data-section="dashboard-section">Dashboard</button>
+      <button class="nav-btn" data-section="tasks-section">Tâches</button>
+      <button class="nav-btn" data-section="goals-section">Objectifs</button>
+      <button class="nav-btn" data-section="profile-section">Profil</button>
+      <button class="nav-btn" data-section="settings-section">Paramètres</button>
+    </nav>
+
+    <!-- Sections -->
+    <section id="dashboard-section" class="section active-section">
+      <div class="dashboard-header">
+        <h2>Tableau de bord</h2>
+        <p id="dashboard-greeting"></p>
+        <p id="dashboard-date" class="date"></p>
+      </div>
+      <div class="dashboard-cards" id="dashboard-cards"></div>
+      <div class="next-tasks">
+        <h3>Tâches à venir</h3>
+        <ul id="next-tasks-list" class="next-tasks-list"></ul>
+      </div>
+    </section>
+
+    <section id="tasks-section" class="section">
+      <div class="tasks-header">
+        <h2>Gestion des tâches</h2>
+        <button id="add-task-btn" class="add-btn">+ Ajouter une tâche</button>
+      </div>
+      <!-- Liste des tâches regroupées par catégorie -->
+      <div id="tasks-container" class="tasks-container"></div>
+      <!-- Formulaire d'ajout/édition de tâche (modal) -->
+      <div id="task-modal" class="modal hidden">
+        <div class="modal-content">
+          <h3 id="task-modal-title">Nouvelle tâche</h3>
+          <form id="task-form" class="task-form">
+            <input type="text" id="task-name-input" placeholder="Nom de la tâche" required />
+            <select id="task-category-input" required>
+              <option value="">Catégorie</option>
+            </select>
+            <input type="datetime-local" id="task-time-input" required />
+            <select id="task-priority-input">
+              <option value="">Priorité</option>
+              <option value="low">Basse</option>
+              <option value="medium">Moyenne</option>
+              <option value="high">Haute</option>
+            </select>
+            <textarea id="task-desc-input" placeholder="Description (facultatif)"></textarea>
+            <div class="modal-actions">
+              <button type="submit" id="save-task-btn">Enregistrer</button>
+              <button type="button" id="cancel-task-btn">Annuler</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="goals-section" class="section">
+      <div class="goals-header">
+        <h2>Objectifs</h2>
+        <button id="add-goal-btn" class="add-btn">+ Ajouter un objectif</button>
+      </div>
+      <div id="goals-container" class="goals-container"></div>
+      <!-- Formulaire d'ajout/édition d'objectif (modal) -->
+      <div id="goal-modal" class="modal hidden">
+        <div class="modal-content">
+          <h3 id="goal-modal-title">Nouvel objectif</h3>
+          <form id="goal-form" class="goal-form">
+            <input type="text" id="goal-name-input" placeholder="Intitulé de l'objectif" required />
+            <input type="range" id="goal-progress-input" min="0" max="100" value="0" />
+            <label for="goal-progress-input">Progression: <span id="goal-progress-value">0%</span></label>
+            <input type="date" id="goal-due-input" />
+            <textarea id="goal-desc-input" placeholder="Description (facultatif)"></textarea>
+            <div class="modal-actions">
+              <button type="submit" id="save-goal-btn">Enregistrer</button>
+              <button type="button" id="cancel-goal-btn">Annuler</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section id="profile-section" class="section">
+      <h2>Profil</h2>
+      <div id="profile-info" class="profile-info"></div>
+    </section>
+
+    <section id="settings-section" class="section">
+      <h2>Paramètres</h2>
+      <div class="settings-group">
+        <label for="theme-switch">Mode sombre</label>
+        <input type="checkbox" id="theme-switch" />
+      </div>
+      <div class="settings-group">
+        <label for="edit-name-input">Modifier votre prénom</label>
+        <input type="text" id="edit-name-input" />
+        <button id="update-name-btn">Mettre à jour</button>
+      </div>
+      <div class="settings-group">
+        <button id="reset-data-btn" class="danger-btn">Réinitialiser les données</button>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+  <!-- Enregistrer le service worker -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js').catch(err => {
+          console.error('Service worker registration failed:', err);
+        });
+      });
+    }
+  </script>
+</body>
+</html>
