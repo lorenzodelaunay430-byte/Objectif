@@ -1,139 +1,159 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0a0a0a">
-  <link rel="manifest" href="manifest.json">
-  <link rel="stylesheet" href="style.css">
-  <title>MyDay Pro</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kebab Incheville</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
-  <!-- Overlay pour demander le nom lors du premier lancement -->
-  <div id="name-overlay" class="overlay hidden">
-    <div class="overlay-content">
-      <h2>Bienvenue !</h2>
-      <p>Comment vous appelez‑vous ?</p>
-      <input type="text" id="user-name-input" placeholder="Votre prénom" />
-      <button id="save-user-name-btn">Enregistrer</button>
-    </div>
-  </div>
 
-  <!-- Conteneur principal -->
-  <div class="app-container">
-    <!-- Barre de navigation principale -->
-    <nav class="nav-bar">
-      <button class="nav-btn active" data-section="dashboard-section">Dashboard</button>
-      <button class="nav-btn" data-section="tasks-section">Tâches</button>
-      <button class="nav-btn" data-section="goals-section">Objectifs</button>
-      <button class="nav-btn" data-section="profile-section">Profil</button>
-      <button class="nav-btn" data-section="settings-section">Paramètres</button>
-    </nav>
+<header>
 
-    <!-- Sections -->
-    <section id="dashboard-section" class="section active-section">
-      <div class="dashboard-header">
-        <h2>Tableau de bord</h2>
-        <p id="dashboard-greeting"></p>
-        <p id="dashboard-date" class="date"></p>
-      </div>
-      <div class="dashboard-cards" id="dashboard-cards"></div>
-      <div class="next-tasks">
-        <h3>Tâches à venir</h3>
-        <ul id="next-tasks-list" class="next-tasks-list"></ul>
-      </div>
-    </section>
+<h1>🔥 KEBAB INCHEVILLE</h1>
+<p>Sandwich • Tacos • Burgers</p>
 
-    <section id="tasks-section" class="section">
-      <div class="tasks-header">
-        <h2>Gestion des tâches</h2>
-        <button id="add-task-btn" class="add-btn">+ Ajouter une tâche</button>
-      </div>
-      <!-- Liste des tâches regroupées par catégorie -->
-      <div id="tasks-container" class="tasks-container"></div>
-      <!-- Formulaire d'ajout/édition de tâche (modal) -->
-      <div id="task-modal" class="modal hidden">
-        <div class="modal-content">
-          <h3 id="task-modal-title">Nouvelle tâche</h3>
-          <form id="task-form" class="task-form">
-            <input type="text" id="task-name-input" placeholder="Nom de la tâche" required />
-            <select id="task-category-input" required>
-              <option value="">Catégorie</option>
-            </select>
-            <input type="datetime-local" id="task-time-input" required />
-            <select id="task-priority-input">
-              <option value="">Priorité</option>
-              <option value="low">Basse</option>
-              <option value="medium">Moyenne</option>
-              <option value="high">Haute</option>
-            </select>
-            <textarea id="task-desc-input" placeholder="Description (facultatif)"></textarea>
-            <div class="modal-actions">
-              <button type="submit" id="save-task-btn">Enregistrer</button>
-              <button type="button" id="cancel-task-btn">Annuler</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </section>
+<div class="contact">
 
-    <section id="goals-section" class="section">
-      <div class="goals-header">
-        <h2>Objectifs</h2>
-        <button id="add-goal-btn" class="add-btn">+ Ajouter un objectif</button>
-      </div>
-      <div id="goals-container" class="goals-container"></div>
-      <!-- Formulaire d'ajout/édition d'objectif (modal) -->
-      <div id="goal-modal" class="modal hidden">
-        <div class="modal-content">
-          <h3 id="goal-modal-title">Nouvel objectif</h3>
-          <form id="goal-form" class="goal-form">
-            <input type="text" id="goal-name-input" placeholder="Intitulé de l'objectif" required />
-            <input type="range" id="goal-progress-input" min="0" max="100" value="0" />
-            <label for="goal-progress-input">Progression: <span id="goal-progress-value">0%</span></label>
-            <input type="date" id="goal-due-input" />
-            <textarea id="goal-desc-input" placeholder="Description (facultatif)"></textarea>
-            <div class="modal-actions">
-              <button type="submit" id="save-goal-btn">Enregistrer</button>
-              <button type="button" id="cancel-goal-btn">Annuler</button>
-            </div>
-          </form>
-        </div>
-      </div>
-    </section>
+<p>📍 6 Rue Jules Verne, 76117 Incheville</p>
 
-    <section id="profile-section" class="section">
-      <h2>Profil</h2>
-      <div id="profile-info" class="profile-info"></div>
-    </section>
+<p>📞 <a href="tel:0952211004">09 52 21 10 04</a></p>
 
-    <section id="settings-section" class="section">
-      <h2>Paramètres</h2>
-      <div class="settings-group">
-        <label for="theme-switch">Mode sombre</label>
-        <input type="checkbox" id="theme-switch" />
-      </div>
-      <div class="settings-group">
-        <label for="edit-name-input">Modifier votre prénom</label>
-        <input type="text" id="edit-name-input" />
-        <button id="update-name-btn">Mettre à jour</button>
-      </div>
-      <div class="settings-group">
-        <button id="reset-data-btn" class="danger-btn">Réinitialiser les données</button>
-      </div>
-    </section>
-  </div>
+<a class="btn" target="_blank" href="https://www.google.com/maps/search/?api=1&query=6+Rue+Jules+Verne+76117+Incheville">
+Voir sur Google Maps
+</a>
 
-  <script src="script.js"></script>
-  <!-- Enregistrer le service worker -->
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('service-worker.js').catch(err => {
-          console.error('Service worker registration failed:', err);
-        });
-      });
-    }
-  </script>
+</div>
+
+</header>
+
+
+<section class="menu">
+
+<div class="card">
+<h2>🥙 Sandwich Libanais</h2>
+
+<ul>
+<li>Kebab — 8€ / 9€</li>
+<li>Royal — 10€ / 11€</li>
+<li>Steak haché — 8€ / 9€</li>
+<li>Kefta — 9€ / 10€</li>
+<li>Chicken — 8€ / 9€</li>
+<li>Merguez — 8€ / 9€</li>
+<li>Cordon bleu — 8€ / 9€</li>
+<li>Double steak — 10€ / 11€</li>
+<li>Falafel — 8€ / 9€</li>
+</ul>
+</div>
+
+
+<div class="card">
+<h2>🍔 Burgers</h2>
+
+<ul>
+<li>Hamburger — 7.50€</li>
+<li>Döner Burger — 7.50€</li>
+<li>Chicken Burger — 7.50€</li>
+<li>Chef Burger — 11€</li>
+</ul>
+
+</div>
+
+
+<div class="card">
+<h2>🌮 Tacos</h2>
+
+<ul>
+<li>1 viande — 8€</li>
+<li>2 viandes — 9.50€</li>
+<li>3 viandes — 11€</li>
+<li>4 viandes — 13€</li>
+<li>5 viandes — 15€</li>
+</ul>
+
+<p class="info">Viandes : kebab, steak, nuggets, merguez, cordon bleu, poulet, tenders</p>
+
+</div>
+
+
+<div class="card">
+<h2>🍽️ Assiettes</h2>
+
+<ul>
+<li>Kebab — 13€</li>
+<li>Steak — 13€</li>
+<li>Merguez — 13€</li>
+<li>Falafel — 12€</li>
+<li>Royal — 14€</li>
+<li>Chicken — 14€</li>
+<li>Côtelettes — 15€</li>
+<li>Mixte — 17€</li>
+</ul>
+
+</div>
+
+
+<div class="card">
+<h2>🥪 Paninis</h2>
+
+<ul>
+<li>3 Fromages — 7.50€</li>
+<li>Poulet — 7.50€</li>
+<li>Steak — 7.50€</li>
+<li>Kebab — 7.50€</li>
+<li>Jambon — 7.50€</li>
+</ul>
+
+</div>
+
+
+<div class="card">
+<h2>🍟 Barquettes</h2>
+
+<ul>
+<li>Frites — 3.50€ / 4.50€</li>
+<li>Boulgour — 4€ / 5€</li>
+<li>Viande — 10€ / 13€</li>
+</ul>
+
+</div>
+
+
+<div class="card">
+<h2>🍰 Desserts</h2>
+
+<ul>
+<li>Tiramisu — 4€</li>
+<li>Tarte — 4€</li>
+<li>Panini Nutella — 4.50€</li>
+</ul>
+
+</div>
+
+
+<div class="card">
+<h2>🥤 Boissons</h2>
+
+<ul>
+<li>Canette 33cl — 2€</li>
+<li>Bouteille — 3€</li>
+<li>Monster — 3.50€</li>
+</ul>
+
+</div>
+
+</section>
+
+
+<footer>
+
+<p>© 2026 Kebab Incheville</p>
+
+</footer>
+
 </body>
 </html>
